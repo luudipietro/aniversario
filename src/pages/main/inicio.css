@@ -7,8 +7,9 @@
 
 body {
   font-family: 'Georgia', serif;
-  background-image: url('fotos/movistar.jpeg');
+  background-image: url('./fotos/movistar.jpeg');
   background-size:cover;
+  background-position: center;
   
   color: white;
 }
