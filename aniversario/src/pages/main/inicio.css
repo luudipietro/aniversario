@@ -1,0 +1,103 @@
+/* Reseteo básico para que ocupe toda la pantalla sin bordes blancos */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif; /* Una tipografía un poco más clásica y elegante */
+  background-color: #111;
+  color: white;
+}
+
+.contenedor-principal {
+  height: 100vh; /* Ocupa el 100% del alto de la pantalla */
+  width: 100vw;  /* Ocupa el 100% del ancho de la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita que aparezcan barras de desplazamiento */
+}
+
+/* --- PANTALLA DE INICIO --- */
+.pantalla-inicio {
+  text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.pantalla-inicio h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #fce4ec; /* Un tono rosado muy sutil */
+}
+
+.pantalla-inicio button {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  background-color: #e91e63; /* Color de acento para el botón */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+}
+
+.pantalla-inicio button:hover {
+  background-color: #c2185b;
+  transform: scale(1.05); /* Efecto de "latido" al pasar el mouse */
+}
+
+/* --- CARRUSEL Y FOTOS --- */
+.carrusel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-activa {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* CRUCIAL: Esto recorta la imagen para que llene la pantalla sin achatarse ni deformarse */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- LA MAGIA DE LAS ANIMACIONES --- */
+.fade-in {
+  /* Al ponerle esta clase a la etiqueta <img> en React, se ejecuta esto: */
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Acá definimos qué hace exactamente la animación "fadeIn" */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* --- TEXTO SOBRE LA FOTO --- */
+.mensaje-superpuesto {
+  position: relative; /* Lo pone por encima de la imagen */
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente para que las letras se lean sin importar los colores de la foto */
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+  animation: fadeIn 3s ease-in-out; /* Aparece un poquito más lento que la foto para dar un efecto dramático */
+}
+
+.mensaje-superpuesto h2 {
+  font-size: 3rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+  color: #fff;
+}
+#root{
+  margin: 0;
+  border: none;
+}
