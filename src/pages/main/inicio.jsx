@@ -4,10 +4,10 @@ import './inicio.css';
 const Aniversario = () => {
   const diapositivas = [
     {
-      imagen: `/fotos/primera.jpg`,
+      imagen: `fotos/primera.jpg`,
       titulo: 'Primer foto oficial',
       parrafo: 'Todo estaba iniciando. No eramos nada, pero yo estaba perdidamente enamorado de vos.',
-      audio: '/audio/de_cabeza.mp3' // Pedazo de canción para esta slide
+      audio: 'audio/de_cabeza.mp3' // Pedazo de canción para esta slide
     },
     {
       imagen: '/fotos/san_pedro.jpg',
