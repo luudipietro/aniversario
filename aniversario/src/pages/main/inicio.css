@@ -81,21 +81,44 @@ body {
 }
 
 /* --- TEXTO SOBRE LA FOTO --- */
+/* Estilos para el nuevo formato del mensaje */
 .mensaje-superpuesto {
-  position: relative; /* Lo pone por encima de la imagen */
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente para que las letras se lean sin importar los colores de la foto */
-  padding: 20px 40px;
-  border-radius: 10px;
+  position: absolute;
+  bottom: 10%; /* Lo ubicamos hacia la parte baja de la pantalla */
+  width: 80%;
+  max-width: 800px;
+  background-color: rgba(0, 0, 0, 0.6); /* Un poco más oscuro para facilitar la lectura */
+  padding: 30px;
+  border-radius: 15px;
   text-align: center;
-  animation: fadeIn 3s ease-in-out; /* Aparece un poquito más lento que la foto para dar un efecto dramático */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  /* Le sacamos el fadeIn a la caja para que esté siempre fija mientras cambia la foto */
 }
 
 .mensaje-superpuesto h2 {
-  font-size: 3rem;
-  font-weight: normal;
-  letter-spacing: 2px;
-  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #ff80ab; /* Un rosado suave para el título */
+  font-style: italic;
+}
+
+.mensaje-superpuesto p {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #ffffff;
+  min-height: 80px; /* Evita que la caja cambie de tamaño bruscamente al escribir */
+}
+
+/* El palito que titila simulando que se está escribiendo */
+.cursor-titilante {
+  animation: titilar 1s step-end infinite;
+  color: #ff80ab;
+  margin-left: 5px;
+}
+
+@keyframes titilar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 #root{
   margin: 0;
