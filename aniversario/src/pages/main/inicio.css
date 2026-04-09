@@ -120,6 +120,35 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+.btn-siguiente {
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: transparent;
+  color: #ff80ab;
+  border: 2px solid #ff80ab;
+  border-radius: 30px;
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  outline: none;
+}
+
+.btn-siguiente:hover {
+  background-color: #ff80ab;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 128, 171, 0.6);
+  transform: translateY(-3px);
+}
+
+/* Animación para que el botón no aparezca de golpe */
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
 #root{
   margin: 0;
   border: none;

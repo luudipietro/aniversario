@@ -2,94 +2,102 @@ import React, { useState, useEffect, useRef } from 'react';
 import './inicio.css';
 
 const Aniversario = () => {
-  // 1. Tus datos: Ahora cada foto tiene su propio título y mensaje
   const diapositivas = [
     {
-      imagen: '/fotos/foto1.jpg',
-      titulo: 'Nuestro primer viaje',
-      parrafo: 'Todavía me acuerdo de lo felices que estábamos este día. Fue el momento en el que supe que quería compartir todos mis viajes con vos.'
+      imagen: '/fotos/primera.jpg',
+      titulo: 'Primer foto oficial',
+      parrafo: 'Todo estaba iniciando. No eramos nada, pero yo estaba perdidamente enamorado de vos.',
+      audio: '/audio/de_cabeza.mp3' // Pedazo de canción para esta slide
     },
     {
-      imagen: '/fotos/foto2.jpg',
-      titulo: 'El día a día',
-      parrafo: 'Me encanta que hasta hacer las compras o mirar una serie se vuelve un planazo si estoy a tu lado. Sos mi lugar seguro.'
+      imagen: '/fotos/san_pedro.jpg',
+      titulo: 'Nuestro primer viaje',
+      parrafo: 'Sin tanta planificacion, nos pegamos una hermosa escapada a San Pedro, y si ya habia sospechas de lo nuestro... Pilar termino de confirmarlas al regreso.',
+      audio: '/audio/de_cabeza.mp3' // Puedes repetir el audio si quieres que dure 2 slides
+    },
+    {
+      imagen: '/fotos/san_pedro.jpg',
+      titulo: 'Nuestro primer viaje',
+      parrafo: 'Sin tanta planificacion, nos pegamos una hermosa escapada a San Pedro, y si ya habia sospechas de lo nuestro... Pilar termino de confirmarlas al regreso.',
+      audio: '/audio/de_cabeza.mp3' // Puedes repetir el audio si quieres que dure 2 slides
+    },
+    {
+      imagen: '/fotos/san_pedro.jpg',
+      titulo: 'Nuestro primer viaje',
+      parrafo: 'Sin tanta planificacion, nos pegamos una hermosa escapada a San Pedro, y si ya habia sospechas de lo nuestro... Pilar termino de confirmarlas al regreso.',
+      audio: '/audio/de_cabeza.mp3' // Puedes repetir el audio si quieres que dure 2 slides
     },
     {
       imagen: '/fotos/foto3.jpg',
       titulo: '¡Felices 2 Años!',
-      parrafo: 'Gracias por enseñarme lo lindo que es el amor sano. Por muchos años más creciendo, riendo y soñando juntos. ¡Te amo infinito!'
+      parrafo: 'Gracias por enseñarme lo lindo que es el amor sano. Por muchos años más creciendo, riendo y soñando juntos. ¡Te amo infinito!',
+      audio: '/audio/hay_un_lugar.mp3'
     }
   ];
 
-  // Configuración de tiempos
-  const velocidadEscritura = 40; // Milisegundos entre cada letra (más bajo = más rápido)
-  const tiempoParaLeer = 5000;   // Tiempo de espera (5 segundos) DESPUÉS de que termina de escribir
-
-  // Estados
   const [comenzado, setComenzado] = useState(false);
   const [indiceActual, setIndiceActual] = useState(0);
   const [textoVisible, setTextoVisible] = useState('');
   const [terminoDeEscribir, setTerminoDeEscribir] = useState(false);
   
-  const audioRef = useRef(null);
+  const audioRef = useRef(new Audio());
+  const velocidadEscritura = 60;
 
-  // EFECTO 1: La máquina de escribir
+  // Lógica para cambiar y reproducir el audio cuando cambia la diapositiva
   useEffect(() => {
-    if (!comenzado) return; // Si no empezó, no hacemos nada
+    if (comenzado) {
+      const audioPath = diapositivas[indiceActual].audio;
+      
+      // Solo cambiamos el audio si es distinto al que ya está sonando
+      if (audioRef.current.src !== window.location.origin + audioPath) {
+        audioRef.current.pause();
+        audioRef.current.volume = 0.08
+        audioRef.current.src = audioPath;
+        audioRef.current.loop = true; // Para que el pedazo de canción no se corte si ella lee lento
+        audioRef.current.play().catch(e => console.log("Error al reproducir:", e));
+      }
+    }
+  }, [indiceActual, comenzado]);
+
+  // Efecto de máquina de escribir
+  useEffect(() => {
+    if (!comenzado) return;
 
     const parrafoCompleto = diapositivas[indiceActual].parrafo;
 
-    // Si todavía faltan letras por escribir...
     if (textoVisible.length < parrafoCompleto.length) {
       const temporizador = setTimeout(() => {
-        // Agregamos la siguiente letra al texto visible
         setTextoVisible(parrafoCompleto.slice(0, textoVisible.length + 1));
       }, velocidadEscritura);
-      
       return () => clearTimeout(temporizador);
     } else {
-      // Si ya se escribieron todas las letras, avisamos que terminó
       setTerminoDeEscribir(true);
     }
-  }, [textoVisible, comenzado, indiceActual]); 
-  // Este efecto se vuelve a ejecutar cada vez que cambia textoVisible
+  }, [textoVisible, comenzado, indiceActual]);
 
-  // EFECTO 2: La pausa y el cambio de foto
-  useEffect(() => {
-    // Solo arrancamos este contador si el texto YA terminó de escribirse
-    if (terminoDeEscribir) {
-      const temporizadorCambio = setTimeout(() => {
-        // 1. Pasamos a la siguiente foto
-        setIndiceActual((prevIndice) => (prevIndice + 1) % diapositivas.length);
-        // 2. Reiniciamos el texto y el estado para la nueva foto
-        setTextoVisible('');
-        setTerminoDeEscribir(false);
-      }, tiempoParaLeer);
-
-      return () => clearTimeout(temporizadorCambio);
+  const irASiguiente = () => {
+    if (indiceActual < diapositivas.length - 1) {
+      setIndiceActual(indiceActual + 1);
+      setTextoVisible('');
+      setTerminoDeEscribir(false);
+    } else {
+      alert("¡Feliz aniversario! Aquí termina este recorrido, pero no nuestra historia.");
     }
-  }, [terminoDeEscribir, diapositivas.length]);
+  };
 
   const iniciarExperiencia = () => {
     setComenzado(true);
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
   };
 
   return (
     <div className="contenedor-principal">
-      {/* Etiqueta de audio oculta */}
-      <audio ref={audioRef} src="/audio/nuestra_cancion.mp3" loop />
-
       {!comenzado ? (
         <div className="pantalla-inicio">
-          <h1>Dos años increíbles</h1>
-          <button onClick={iniciarExperiencia}>Comenzar nuestro viaje</button>
+          <h1>Dos años juntos</h1>
+          <button className="btn-comenzar" onClick={iniciarExperiencia}>Comenzar nuestro viaje</button>
         </div>
       ) : (
         <div className="carrusel">
-          {/* Key es importante aquí: fuerza a React a re-animar el fadeIn cuando cambia el índice */}
           <img 
             key={indiceActual} 
             src={diapositivas[indiceActual].imagen} 
@@ -99,11 +107,17 @@ const Aniversario = () => {
           
           <div className="mensaje-superpuesto">
             <h2>{diapositivas[indiceActual].titulo}</h2>
-            {/* Aquí mostramos el texto que se va escribiendo, más un "cursor" parpadeante */}
             <p>
               {textoVisible}
               {!terminoDeEscribir && <span className="cursor-titilante">|</span>}
             </p>
+            
+            {/* El botón aparece con una animación suave solo cuando el texto termina */}
+            {terminoDeEscribir && (
+              <button className="btn-siguiente fade-in" onClick={irASiguiente}>
+                {indiceActual === diapositivas.length - 1 ? "Nuestro futuro..." : "Continuar nuestra historia"}
+              </button>
+            )}
           </div>
         </div>
       )}
