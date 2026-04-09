@@ -72,6 +72,7 @@ const Aniversario = () => {
   const [terminoDeEscribir, setTerminoDeEscribir] = useState(false);
   
   const audioRef = useRef(new Audio());
+  const cancionActualRef = useRef(null);
   const velocidadEscritura = 80;
 
   // Lógica para cambiar y reproducir el audio cuando cambia la diapositiva
@@ -80,7 +81,7 @@ const Aniversario = () => {
       const audioPath = diapositivas[indiceActual].audio;
       
       // Solo cambiamos el audio si es distinto al que ya está sonando
-      if (audioRef.current.src !== audioPath) {
+      if (cancionActualRef.current !== audioPath) {
         audioRef.current.pause();
         audioRef.current.volume = 0.1
         audioRef.current.src = audioPath;
