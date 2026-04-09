@@ -82,11 +82,15 @@ const Aniversario = () => {
       
       // Solo cambiamos el audio si es distinto al que ya está sonando
       if (cancionActualRef.current !== audioPath) {
+        console.log(cancionActualRef.current)
+        console.log(audioPath)
         audioRef.current.pause();
         audioRef.current.volume = 0.1
         audioRef.current.src = audioPath;
         audioRef.current.loop = true; // Para que el pedazo de canción no se corte si ella lee lento
         audioRef.current.play().catch(e => console.log("Error al reproducir:", e));
+        //actualizar memoria
+        cancionActualRef.current = audioPath;
         if(audioPath == 'audio/hay_un_lugar_cortado.mp3'){
           audioRef.current.volume = 0.4
         }
