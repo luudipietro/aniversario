@@ -10,59 +10,59 @@ const Aniversario = () => {
       audio: 'audio/de_cabeza.mp3' // Pedazo de canción para esta slide
     },
     {
-      imagen: '/fotos/san_pedro.jpg',
+      imagen: 'fotos/san_pedro.jpg',
       titulo: 'Nuestro primer viaje',
       parrafo: 'Sin tanta planificacion, nos pegamos una hermosa escapada a San Pedro, y si ya habia sospechas de lo nuestro... Pilar termino de confirmarlas al regreso.',
-      audio: '/audio/de_cabeza.mp3' // Puedes repetir el audio si quieres que dure 2 slides
+      audio: 'audio/de_cabeza.mp3' // Puedes repetir el audio si quieres que dure 2 slides
     },
     {
-      imagen: '/fotos/parque.jpeg',
+      imagen: 'fotos/parque.jpeg',
       titulo: 'Volvés mágico lo cotidiano',
       parrafo: 'En un parque o en un crucero, tomando mates o cerveza, siempre sos mi mejor compañía.',
-      audio: '/audio/hay_un_lugar_cortado.mp3' // Puedes repetir el audio si quieres que dure 2 slides
+      audio: 'audio/hay_un_lugar_cortado.mp3' // Puedes repetir el audio si quieres que dure 2 slides
     },
     {
-      imagen: '/fotos/noche_mar.jpeg',
+      imagen: 'fotos/noche_mar.jpeg',
       titulo: 'Mi Sol en la oscuridad',
       parrafo: 'Cuando todo parece perdido, oscuro y sin rumbo, siempre estas vos para sacarme a flote y hacerme sonreír.',
-      audio: '/audio/hay_un_lugar_cortado.mp3' // Puedes repetir el audio si quieres que dure 2 slides
+      audio: 'audio/hay_un_lugar_cortado.mp3' // Puedes repetir el audio si quieres que dure 2 slides
     },
     {
-      imagen: '/fotos/rebelde.jpeg',
+      imagen: 'fotos/rebelde.jpeg',
       titulo: 'Bonita de más',
       parrafo: 'El brillo de tus ojos esa noche fue bello. Amo verte feliz y compartir momentos así con vos.',
-      audio: '/audio/bonita.mp3'
+      audio: 'audio/bonita.mp3'
     },
     {
-      imagen: '/fotos/sola.jpeg',
+      imagen: 'fotos/sola.jpeg',
       titulo: 'Simplemente vos',
       parrafo: 'Una vos solita porque sos la linda de la relación y me gusta mucho esa foto',
-      audio: '/audio/bonita.mp3'
+      audio: 'audio/bonita.mp3'
     },
        {
-      imagen: '/fotos/playa.jpeg',
+      imagen: 'fotos/playa.jpeg',
       titulo: 'Viajes y el CEF',
       parrafo: 'Siempre pienso que nuestras vidas de alguna forma estaban conectadas. No sé, de alguna manera estabamos destinados a ser la pareja ideal',
-      audio: '/audio/y_asi_sera.mp3'
+      audio: 'audio/y_asi_sera.mp3'
     },
       {
-      imagen: '/fotos/uruguay.jpg',
+      imagen: 'fotos/uruguay.jpg',
       titulo: 'Uruguay',
       parrafo: 'Nosotros haciendonos los lindos luego de caminar 754 km para llegar a una playa',
-      audio: '/audio/y_asi_sera.mp3'
+      audio: 'audio/y_asi_sera.mp3'
     },
      
     {
-      imagen: '/fotos/teen.png',
+      imagen: 'fotos/teen.png',
       titulo: 'Reencuentro de los Teen',
       parrafo: 'Esta  fotito viene del futuro, del dia en que los teen se reencuentren y vayamos al concierto',
-      audio: '/audio/pensar_en_vos.mp3'
+      audio: 'audio/pensar_en_vos.mp3'
     },
        {
-      imagen: '/fotos/atardecer.jpg',
+      imagen: 'fotos/atardecer.jpg',
       titulo: '¡Felices 2 Años!',
       parrafo: 'Por muchos años más creciendo, riendo y soñando juntos. ¡Te amo infinito! PD: es mi foto favorita de los dos',
-      audio: '/audio/pensar_en_vos.mp3'
+      audio: 'audio/pensar_en_vos.mp3'
     }
   ];
 
