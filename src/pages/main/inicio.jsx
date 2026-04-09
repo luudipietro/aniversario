@@ -2,10 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import './inicio.css';
 
 const Aniversario = () => {
-  const base = import.meta.env.BASE_URL;
   const diapositivas = [
     {
-      imagen: `${base}/fotos/primera.jpg`,
+      imagen: `/fotos/primera.jpg`,
       titulo: 'Primer foto oficial',
       parrafo: 'Todo estaba iniciando. No eramos nada, pero yo estaba perdidamente enamorado de vos.',
       audio: '/audio/de_cabeza.mp3' // Pedazo de canción para esta slide
