@@ -1,0 +1,54 @@
+name: Desplegar React a GitHub Pages
+
+# El script se ejecuta cada vez que hacés un 'push' a la rama principal
+on:
+  push:
+    branches:
+      - main # Si tu rama se llama 'master', cambialo acá
+
+# Permisos necesarios para escribir en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite que solo corra un despliegue a la vez
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Descargar el código
+        uses: actions/checkout@v4
+
+      - name: 2. Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24' # Podés ajustarlo a tu versión local
+
+      - name: 3. Instalar dependencias
+        run: npm install
+
+      - name: 4. Construir el proyecto (Build)
+        run: npm run build
+
+      - name: 5. Configurar GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: 6. Subir Artefactos (Los archivos compilados)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # ¡IMPORTANTE! 
+          # Si creaste tu app con Create React App, la carpeta es './build'
+          # Si usaste Vite, cambialo a './dist'
+          path: './dist' 
+
+      - name: 7. Desplegar en producción
+        id: deployment
+        uses: actions/deploy-pages@v4
