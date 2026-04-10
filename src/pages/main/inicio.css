@@ -27,6 +27,7 @@ body {
 
 .pantalla-inicio h1 {
   position: absolute;
+  box-shadow: 0 4px 15px rgba(24, 23, 24, 0.4);
   top: 10%;
   font-size: 3rem;
   margin-bottom: 2rem;
