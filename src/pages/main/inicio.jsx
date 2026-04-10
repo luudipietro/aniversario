@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Swal from 'sweetalert2';
 import './inicio.css';
 
 const Aniversario = () => {
@@ -61,7 +62,7 @@ const Aniversario = () => {
        {
       imagen: 'fotos/atardecer.jpg',
       titulo: '¡Felices 2 Años!',
-      parrafo: 'Por muchos años más creciendo, riendo y soñando juntos. ¡Te amo infinito! PD: es mi foto favorita de los dos',
+      parrafo: 'Por muchos años más creciendo, riendo y soñando juntos. ¡Te amo hasta el cielo ida y vuelta! PD: es mi foto de nosotros favorita',
       audio: 'audio/pensar_en_vos.mp3'
     }
   ];
@@ -120,7 +121,13 @@ const Aniversario = () => {
       setTextoVisible('');
       setTerminoDeEscribir(false);
     } else {
-      alert("¡Feliz aniversario! Aquí termina este recorrido, pero no nuestra historia.");
+      Swal.fire({
+        title: '💖 ¡Feliz aniversario!',
+        html: '<p>Aquí termina este recorrido,<br>pero no nuestra historia ✨</p>',
+        background: '#fff0f5',
+        confirmButtonText: '❤️ Continuar',
+        confirmButtonColor: '#ff4d6d'
+      });
     }
   };
 
