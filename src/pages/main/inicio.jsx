@@ -139,7 +139,7 @@ const Aniversario = () => {
     <div className="contenedor-principal">
       {!comenzado ? (
         <div className="pantalla-inicio">
-          <h1>Dos años juntos</h1>
+          <h1>Nuestros 2 Años</h1>
           <button className="btn-comenzar" onClick={iniciarExperiencia}>Comenzar nuestro viaje</button>
         </div>
       ) : (

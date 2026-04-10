@@ -26,12 +26,16 @@ body {
 /* --- PANTALLA DE INICIO --- */
 
 .pantalla-inicio h1 {
+  position: absolute;
+  top: 10%;
   font-size: 3rem;
   margin-bottom: 2rem;
   color: #fce4ec; /* Un tono rosado muy sutil */
 }
 
 .pantalla-inicio button {
+  position: absolute;
+  bottom: 10%;
   padding: 15px 40px;
   font-size: 1.2rem;
   background-color: #e91e63; /* Color de acento para el botón */
